@@ -1,0 +1,148 @@
+{
+  "CBB": {
+    "codigo": "CBB",
+    "nombre_tecnico": "Cassava Bacterial Blight",
+    "nombre_es": "Bacteriosis de la yuca",
+    "cultivo": "Yuca (Manihot esculenta)",
+    "agente": "Xanthomonas axonopodis pv. manihotis",
+    "tipo": "Bacteriana",
+    "estado": "enfermo",
+    "urgencia": "alta",
+    "descripcion": "Enfermedad bacteriana que afecta hojas, tallos y raíces de la yuca. En condiciones de alta humedad puede destruir parcelas enteras en semanas.",
+    "sintomas": [
+      "Manchas angulares acuosas de color verde oscuro que se tornan marrones",
+      "Las manchas están delimitadas por las nervaduras de la hoja",
+      "Exudado bacteriano blancuzco en el envés de la hoja",
+      "Marchitamiento y muerte descendente de ramas",
+      "Podredumbre vascular en tallos y raíces (interior pardo)"
+    ],
+    "tratamiento": [
+      "Eliminar y destruir inmediatamente las plantas muy afectadas",
+      "Desinfectar herramientas con hipoclorito de sodio al 1%",
+      "Aplicar bactericida cúprico (oxicloruro de cobre) en plantas vecinas",
+      "Evitar el riego por aspersión que favorece la dispersión",
+      "Usar esquejes de plantas certificadas sanas en la próxima siembra",
+      "Reportar al SENASA si el daño supera el 30% de la parcela"
+    ],
+    "prevencion": [
+      "Usar variedades resistentes certificadas",
+      "Rotar cultivos con gramíneas (maíz, arroz)",
+      "Evitar heridas en plantas durante labores culturales"
+    ],
+    "impacto_economico": "Pérdidas de rendimiento de 20–100% en casos severos"
+  },
+  "CBSD": {
+    "codigo": "CBSD",
+    "nombre_tecnico": "Cassava Brown Streak Disease",
+    "nombre_es": "Enfermedad de rayas pardas de la yuca",
+    "cultivo": "Yuca (Manihot esculenta)",
+    "agente": "Cassava brown streak virus (CBSV / UCBSV)",
+    "tipo": "Viral",
+    "estado": "enfermo",
+    "urgencia": "critica",
+    "descripcion": "Enfermedad viral devastadora transmitida por la mosca blanca. Afecta internamente los tubérculos volviéndolos no comestibles incluso cuando la planta parece sana externamente.",
+    "sintomas": [
+      "Rayas o manchas de color pardo-amarillento en pecíolos y tallos",
+      "Moteado clorótico en hojas (manchas amarillo-verdes irregulares)",
+      "Tubérculos con necrosis interna marrón (visible al cortar la raíz)",
+      "Las raíces afectadas tienen aspecto de 'queso suizo' internamente",
+      "Planta puede parecer sana externamente pero con raíces totalmente inútiles"
+    ],
+    "tratamiento": [
+      "No existe tratamiento curativo — eliminar plantas infectadas",
+      "Destruir completamente la planta (quemar o enterrar a >50cm de profundidad)",
+      "Controlar la mosca blanca vector con insecticida sistémico (imidacloprid)",
+      "Establecer zonas de cuarentena alrededor de la parcela afectada",
+      "Comunicar al SENASA — es una enfermedad de notificación obligatoria en Perú"
+    ],
+    "prevencion": [
+      "Usar material vegetal certificado libre de virus",
+      "Instalar trampas amarillas para monitorear mosca blanca",
+      "Inspeccionar raíces al corte antes de usar como semilla"
+    ],
+    "impacto_economico": "Pérdidas totales de raíces — cultivo inútil para consumo y mercado"
+  },
+  "CGM": {
+    "codigo": "CGM",
+    "nombre_tecnico": "Cassava Green Mottle",
+    "nombre_es": "Moteado verde de la yuca",
+    "cultivo": "Yuca (Manihot esculenta)",
+    "agente": "Cassava green mottle virus (CsGMV) — Carlavirus",
+    "tipo": "Viral",
+    "estado": "enfermo",
+    "urgencia": "media",
+    "descripcion": "Enfermedad viral que produce un moteado verde en las hojas, generalmente menos severa que el CMD o el CBSD pero que reduce el rendimiento del cultivo.",
+    "sintomas": [
+      "Moteado verde claro sobre fondo verde oscuro en las hojas",
+      "Reducción del tamaño de las hojas jóvenes",
+      "Ligera deformación del limbo foliar",
+      "Reducción general del vigor de la planta",
+      "Síntomas más evidentes en hojas jóvenes en brotación"
+    ],
+    "tratamiento": [
+      "Eliminar y destruir las plantas severamente afectadas",
+      "Controlar los áfidos que transmiten el virus",
+      "Aplicar insecticida sistémico para reducir la población vectora",
+      "Reemplazar plantas muy afectadas con material sano certificado"
+    ],
+    "prevencion": [
+      "Usar material de siembra libre de virus",
+      "Mantener el cultivo libre de malezas que hospedan al vector",
+      "Inspección periódica del cultivo en etapas tempranas"
+    ],
+    "impacto_economico": "Reducción de rendimiento del 15–30% en infecciones moderadas"
+  },
+  "CMD": {
+    "codigo": "CMD",
+    "nombre_tecnico": "Cassava Mosaic Disease",
+    "nombre_es": "Mosaico de la yuca",
+    "cultivo": "Yuca (Manihot esculenta)",
+    "agente": "Complejo de Begomovirus (Geminiviridae)",
+    "tipo": "Viral",
+    "estado": "enfermo",
+    "urgencia": "alta",
+    "descripcion": "La enfermedad más extendida de la yuca a nivel mundial. Transmitida por la mosca blanca, produce pérdidas de rendimiento del 15–24% anuales.",
+    "sintomas": [
+      "Mosaico amarillo-verde o amarillo intenso en las hojas",
+      "Hojas deformadas, rugosas, con bordes irregulares",
+      "Reducción severa del tamaño de las hojas (nanismo foliar)",
+      "Tubérculos pequeños y deformes en infecciones severas",
+      "Los síntomas son más intensos en hojas jóvenes en desarrollo"
+    ],
+    "tratamiento": [
+      "Eliminar plantas con síntomas severos antes de que infecten a vecinas",
+      "Controlar la mosca blanca (Bemisia tabaci) con insecticida sistémico",
+      "Aplicar aceite de neem como control biológico para reducir la población vectora",
+      "No usar esquejes de plantas infectadas para la próxima siembra"
+    ],
+    "prevencion": [
+      "Usar variedades resistentes al CMD (variedades mejoradas del CIAT)",
+      "Instalar mallas antiinsectos en viveros de producción de semilla",
+      "Inspeccionar el cultivo semanalmente en temporada de alta incidencia de mosca blanca"
+    ],
+    "impacto_economico": "Pérdidas de rendimiento del 15–24% en infecciones moderadas, hasta 80% en severas"
+  },
+  "HEALTHY": {
+    "codigo": "HEALTHY",
+    "nombre_tecnico": "Healthy",
+    "nombre_es": "Planta sana",
+    "cultivo": "Yuca (Manihot esculenta)",
+    "agente": null,
+    "tipo": null,
+    "estado": "sano",
+    "urgencia": "ninguna",
+    "descripcion": "La hoja de yuca analizada no presenta síntomas visibles de enfermedades. La planta se encuentra en buen estado fitosanitario.",
+    "sintomas": [],
+    "tratamiento": [
+      "Mantener el monitoreo periódico del cultivo (cada 15 días)",
+      "Aplicar fertilización balanceada según análisis de suelo",
+      "Controlar malezas para reducir la competencia y el refugio de plagas",
+      "Mantener el drenaje adecuado del suelo"
+    ],
+    "prevencion": [
+      "Continuar con las buenas prácticas agrícolas actuales",
+      "Registrar las condiciones del cultivo para detectar cambios tempranos"
+    ],
+    "impacto_economico": "Sin impacto — cultivo en condiciones normales"
+  }
+}

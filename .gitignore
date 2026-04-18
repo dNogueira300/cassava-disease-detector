@@ -1,0 +1,34 @@
+# Modelo (archivo pesado)
+backend/model/*.h5
+backend/model/*.pt
+backend/model/*.pkl
+backend/model/*.pth
+
+# Entornos virtuales Python
+backend/venv/
+backend/.venv/
+backend/env/
+
+# Caché Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Dependencias Node
+frontend/node_modules/
+frontend/dist/
+
+# Variables de entorno
+.env
+.env.local
+
+# Credenciales Kaggle
+kaggle.json
+
+# IDEs
+.vscode/
+.idea/
+
+# Windows
+Thumbs.db
+desktop.ini
