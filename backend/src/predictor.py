@@ -11,10 +11,10 @@ from PIL import Image
 import io, json, os
 from torchvision import transforms
 
-BASE       = os.path.join(os.path.dirname(__file__), "..", "..")
-MODEL_PATH = os.path.join(BASE, "backend", "model", "efficientnet_cassava.pth")
-IDX_PATH   = os.path.join(BASE, "backend", "model", "class_indices.json")
-DICT_PATH  = os.path.join(BASE, "assets", "disease_info", "diseases_es.json")
+BASE       = r"D:\300\OTROS\XXX\DAN\IA\cassava-disease-detector"
+MODEL_PATH = r"D:\300\OTROS\XXX\DAN\IA\cassava-disease-detector\backend\model\efficientnet_cassava.pth"
+IDX_PATH   = r"D:\300\OTROS\XXX\DAN\IA\cassava-disease-detector\backend\model\class_indices.json"
+DICT_PATH  = r"D:\300\OTROS\XXX\DAN\IA\cassava-disease-detector\assets\disease_info\diseases_es.json"
 
 IMG_SIZE = 380
 TRANSFORM = transforms.Compose([

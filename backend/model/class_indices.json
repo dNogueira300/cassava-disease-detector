@@ -1,0 +1,27 @@
+{
+  "0": {
+    "codigo": "CBB",
+    "nombre_tecnico": "Cassava Bacterial Blight",
+    "urgencia": "alta"
+  },
+  "1": {
+    "codigo": "CBSD",
+    "nombre_tecnico": "Cassava Brown Streak Disease",
+    "urgencia": "critica"
+  },
+  "2": {
+    "codigo": "CGM",
+    "nombre_tecnico": "Cassava Green Mottle",
+    "urgencia": "media"
+  },
+  "3": {
+    "codigo": "CMD",
+    "nombre_tecnico": "Cassava Mosaic Disease",
+    "urgencia": "alta"
+  },
+  "4": {
+    "codigo": "HEALTHY",
+    "nombre_tecnico": "Healthy",
+    "urgencia": "ninguna"
+  }
+}

@@ -1,0 +1,9 @@
+modelo: EfficientNet-B4
+framework: PyTorch + timm
+dataset: Kaggle Cassava Leaf Disease Classification
+url_dataset: https://www.kaggle.com/c/cassava-leaf-disease-classification
+clases: 5
+precision_fine_tuned: ~91%
+precision_base: ~61%
+inferencia_cpu: 100-300ms por imagen
+referencia: https://github.com/kozodoi/Kaggle_Leaf_Disease_Classification

@@ -1,17 +1,19 @@
 import './index.css'
 import Hero from './components/Hero'
-import DiseaseDetector from './components/DiseaseDetector'
 import InfoSection from './components/InfoSection'
+import CassavaCultivo from './components/CassavaCultivo'
 import DatasetSection from './components/DatasetSection'
+import DiseaseDetector from './components/DiseaseDetector'
 import Footer from './components/Footer'
 
 export default function App() {
   return (
     <>
       <Hero />
-      <DiseaseDetector />
       <InfoSection />
+      <CassavaCultivo />
       <DatasetSection />
+      <DiseaseDetector />
       <Footer />
     </>
   )

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Bug, Zap, Leaf, AlertTriangle, AlertCircle, CheckCircle, X } from 'lucide-react'
+import { Bug, Zap, Leaf, AlertTriangle, AlertCircle, CheckCircle, X, ChevronRight } from 'lucide-react'
 
 const DISEASES = [
   {
@@ -47,7 +47,7 @@ export default function InfoSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, margin: '-60px' }}
           transition={{ duration: 0.6 }}
           style={{ marginBottom: '48px' }}
         >
@@ -59,35 +59,71 @@ export default function InfoSection() {
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '20px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           {DISEASES.map((d, i) => {
             const Icon = d.icon
             return (
               <motion.div
                 key={d.codigo}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                whileHover={{ y: -6, boxShadow: 'var(--shadow-md)' }}
+                initial={{ opacity: 0, x: -28 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, margin: '-40px' }}
+                transition={{ delay: i * 0.07, duration: 0.45 }}
+                whileHover={{
+                  x: 8,
+                  boxShadow: 'var(--shadow-md)',
+                  borderColor: d.color + '55',
+                  background: 'var(--white)',
+                }}
                 onClick={() => setSelected(d)}
                 style={{
                   background: 'var(--white)',
                   borderRadius: 'var(--radius)',
-                  padding: '24px 20px',
+                  padding: '18px 22px',
                   cursor: 'pointer',
-                  border: '1px solid var(--cream-dark)',
-                  transition: 'all var(--transition)',
+                  border: `1px solid var(--cream-dark)`,
                   boxShadow: 'var(--shadow-sm)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '18px',
+                  transition: 'border-color 0.25s ease, background 0.25s ease',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                  <Icon size={28} color={d.color} strokeWidth={1.5} />
-                  <span className={`badge badge--${URGENCY_CLASS[d.urgencia]}`}>{URGENCY_LABEL[d.urgencia]}</span>
+                {/* Icon tile */}
+                <motion.div
+                  whileHover={{ rotate: [0, -8, 8, 0] }}
+                  transition={{ duration: 0.4 }}
+                  style={{
+                    flexShrink: 0,
+                    width: '46px',
+                    height: '46px',
+                    borderRadius: '12px',
+                    background: `${d.color}15`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: `1.5px solid ${d.color}28`,
+                  }}
+                >
+                  <Icon size={22} color={d.color} strokeWidth={1.6} />
+                </motion.div>
+
+                {/* Text */}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px', flexWrap: 'wrap' }}>
+                    <h3 style={{ fontSize: '0.97rem', margin: 0 }}>{d.nombre}</h3>
+                    {d.tipo && <span style={{ fontSize: '0.73rem', color: 'var(--brown-mid)', fontStyle: 'italic' }}>· {d.tipo}</span>}
+                  </div>
+                  <p style={{ fontSize: '0.84rem', color: 'var(--gray-text)', lineHeight: 1.5, margin: 0 }}>{d.resumen}</p>
                 </div>
-                <h3 style={{ fontSize: '1rem', marginBottom: '6px' }}>{d.nombre}</h3>
-                {d.tipo && <p style={{ fontSize: '0.78rem', color: 'var(--brown-mid)', marginBottom: '8px' }}>{d.tipo}</p>}
-                <p style={{ fontSize: '0.82rem', color: 'var(--gray-text)', lineHeight: 1.5 }}>{d.resumen}</p>
+
+                {/* Right: badge + arrow */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+                  <span className={`badge badge--${URGENCY_CLASS[d.urgencia]}`}>
+                    {URGENCY_LABEL[d.urgencia]}
+                  </span>
+                  <ChevronRight size={15} color="var(--brown-mid)" style={{ opacity: 0.5 }} />
+                </div>
               </motion.div>
             )
           })}
@@ -112,6 +148,7 @@ export default function InfoSection() {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 26 }}
               onClick={(e) => e.stopPropagation()}
               style={{
                 background: 'var(--white)', borderRadius: 'var(--radius-lg)',

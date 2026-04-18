@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Database, GitBranch, ExternalLink, Info } from 'lucide-react'
+import { Database, GitBranch, ExternalLink } from 'lucide-react'
 
 const LINKS = [
   {
@@ -34,11 +34,11 @@ const LINKS = [
 
 const METRICS = [
   { label: 'Imágenes de entrenamiento', value: '21,367' },
-  { label: 'Clases', value: '5' },
-  { label: 'Precisión EfficientNet-B4', value: '~91%' },
-  { label: 'Tamaño de entrada', value: '380×380 px' },
-  { label: 'Inferencia CPU', value: '~100–300 ms' },
-  { label: 'Licencia dataset', value: 'CC0' },
+  { label: 'Clases',                    value: '5'      },
+  { label: 'Precisión EfficientNet-B4', value: '~91%'   },
+  { label: 'Tamaño de entrada',         value: '380×380 px' },
+  { label: 'Inferencia CPU',            value: '~100–300 ms'},
+  { label: 'Licencia dataset',          value: 'CC0'    },
 ]
 
 export default function DatasetSection() {
@@ -48,7 +48,7 @@ export default function DatasetSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, margin: '-60px' }}
           transition={{ duration: 0.6 }}
           style={{ marginBottom: '48px' }}
         >
@@ -60,20 +60,27 @@ export default function DatasetSection() {
           </p>
         </motion.div>
 
-        {/* Metrics */}
+        {/* Metric chips */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '12px', marginBottom: '48px' }}>
           {METRICS.map((m, i) => (
             <motion.div
               key={m.label}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, margin: '-40px' }}
               transition={{ delay: i * 0.06 }}
+              whileHover={{
+                y: -4,
+                background: 'rgba(255,255,255,0.13)',
+                boxShadow: '0 6px 20px rgba(0,0,0,0.25)',
+              }}
               style={{
                 background: 'rgba(255,255,255,0.07)',
                 borderRadius: 'var(--radius)',
                 padding: '16px',
                 border: '1px solid rgba(255,255,255,0.10)',
+                cursor: 'default',
+                transition: 'background 0.25s ease',
               }}
             >
               <div style={{ color: 'var(--green-pale)', fontSize: '1.25rem', fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>{m.value}</div>
@@ -82,7 +89,7 @@ export default function DatasetSection() {
           ))}
         </div>
 
-        {/* Links */}
+        {/* Link cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '16px' }}>
           {LINKS.map((l, i) => {
             const Icon = l.icon
@@ -92,11 +99,16 @@ export default function DatasetSection() {
                 href={l.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, margin: '-40px' }}
                 transition={{ delay: i * 0.08 }}
-                whileHover={{ y: -4 }}
+                whileHover={{
+                  y: -5,
+                  background: 'rgba(255,255,255,0.14)',
+                  borderColor: 'rgba(183,228,199,0.35)',
+                  boxShadow: '0 10px 32px rgba(0,0,0,0.30)',
+                }}
                 style={{
                   display: 'block',
                   background: 'rgba(255,255,255,0.08)',
