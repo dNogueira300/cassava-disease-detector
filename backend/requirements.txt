@@ -1,0 +1,15 @@
+# Dependencias de producción — AmazoniaCrop backend
+# Ubicación estándar (backend/requirements.txt) para que el builder de
+# Railway/Docker las detecte. Copia sincronizada de src/requirements.txt.
+#
+# NOTA torch/torchvision: el Dockerfile instala estas dos desde el índice
+# CPU-only de PyTorch ANTES de este archivo para evitar la variante CUDA.
+torch==2.11.0
+torchvision==0.22.0
+timm==1.0.15
+numpy==2.2.5
+Pillow==11.2.1
+fastapi==0.115.12
+uvicorn==0.34.2
+python-multipart==0.0.20
+requests==2.32.3

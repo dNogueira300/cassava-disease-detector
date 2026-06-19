@@ -1,4 +1,10 @@
 """
+[LEGADO — NO SE USA EN RUNTIME]
+Script histórico de la etapa solo-yuca. El backend actual NO lo importa ni lo
+ejecuta. La descarga de modelos en producción la hace backend/src/download_models.py
+desde Hugging Face Hub. Se conserva solo como referencia. Depende de `gdown`
+(ver backend/requirements-dev.txt).
+
 Descarga y configura el modelo preentrenado para detección de enfermedades en yuca.
 Fuente: p-s-vishnu/cassava-leaf-disease-classification (GitHub/PyPI)
 Dataset base: Kaggle Cassava Leaf Disease Classification (21,367 imágenes, 5 clases)

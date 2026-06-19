@@ -1,0 +1,53 @@
+{
+  "HEALTHY": {
+    "nombre_es": "Vaina sana",
+    "cultivo": "Cacao (Theobroma cacao)",
+    "agente": null,
+    "tipo": null,
+    "estado": "sano",
+    "urgencia": "ninguna",
+    "descripcion": "La vaina de cacao analizada no presenta síntomas de enfermedades. Se encuentra en buen estado fitosanitario.",
+    "sintomas": [],
+    "tratamiento": [
+      "Continuar con el calendario de cosecha cada 8-10 días",
+      "Mantener las podas sanitarias regulares del árbol",
+      "Fertilizar con abonos orgánicos según el ciclo del cultivo"
+    ],
+    "prevencion": [
+      "Mantener la cobertura de sombra adecuada para el cacao",
+      "Monitorear las vainas en cada cosecha para detección temprana",
+      "Llevar registro de incidencia de enfermedades por lote"
+    ],
+    "impacto_economico": "Sin impacto — cultivo en condiciones normales"
+  },
+  "BLACK_POD_ROT": {
+    "nombre_es": "Pudrición negra — Fitóftora",
+    "cultivo": "Cacao (Theobroma cacao)",
+    "agente": "Phytophthora palmivora",
+    "tipo": "Oomyceto",
+    "estado": "enfermo",
+    "urgencia": "critica",
+    "descripcion": "La enfermedad más agresiva del cacao. Causada por Phytophthora palmivora, puede destruir una vaina completa en 2-3 días y propagarse rápidamente a toda la plantación en condiciones de alta humedad.",
+    "sintomas": [
+      "Manchas oscuras de color marrón-negro que avanzan rápidamente sobre la vaina",
+      "Las manchas tienen aspecto acuoso o brillante al inicio de la infección",
+      "La vaina se endurece, ennegrece y se arruga en casos avanzados",
+      "Puede aparecer moho blancuzco en la superficie de la vaina infectada",
+      "También puede afectar raíces, tronco y ramas causando cancros"
+    ],
+    "tratamiento": [
+      "Retirar y destruir las vainas infectadas INMEDIATAMENTE — no dejarlas en el suelo",
+      "Enterrar las vainas enfermas a más de 30cm de profundidad",
+      "Aplicar fungicida con metalaxil + mancozeb en vainas sanas cercanas",
+      "Tratar los cancros en el tronco con pasta cúprica (oxicloruro de cobre)",
+      "Aumentar la frecuencia de cosecha a cada 5-7 días para detectar antes"
+    ],
+    "prevencion": [
+      "Evitar el encharcamiento y el exceso de humedad en la plantación",
+      "Realizar podas de mantenimiento para mejorar la ventilación del árbol",
+      "Aplicar fungicida cúprico preventivo al inicio de la época lluviosa",
+      "Desinfectar las herramientas de poda con hipoclorito de sodio al 10%"
+    ],
+    "impacto_economico": "Puede destruir el 100% de las vainas en condiciones de alta humedad. Principal causa de pérdidas en cacao en la Amazonía."
+  }
+}

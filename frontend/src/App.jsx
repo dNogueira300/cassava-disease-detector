@@ -1,19 +1,23 @@
+import { useState } from 'react'
 import './index.css'
 import Hero from './components/Hero'
+import CropSelector from './components/CropSelector'
 import InfoSection from './components/InfoSection'
-import CassavaCultivo from './components/CassavaCultivo'
-import DatasetSection from './components/DatasetSection'
 import DiseaseDetector from './components/DiseaseDetector'
 import Footer from './components/Footer'
 
 export default function App() {
+  const [cultivoSeleccionado, setCultivoSeleccionado] = useState(null)
+
   return (
     <>
       <Hero />
-      <InfoSection />
-      <CassavaCultivo />
-      <DatasetSection />
-      <DiseaseDetector />
+      <InfoSection cultivo={cultivoSeleccionado} />
+      <CropSelector
+        cultivoSeleccionado={cultivoSeleccionado}
+        onSeleccionar={setCultivoSeleccionado}
+      />
+      <DiseaseDetector cultivo={cultivoSeleccionado} />
       <Footer />
     </>
   )

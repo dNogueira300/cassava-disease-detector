@@ -1,0 +1,18 @@
+{
+  "0": {
+    "codigo": "CORDANA",
+    "nombre_tecnico": "cordana"
+  },
+  "1": {
+    "codigo": "HEALTHY",
+    "nombre_tecnico": "healthy"
+  },
+  "2": {
+    "codigo": "PESTALOTIOPSIS",
+    "nombre_tecnico": "pestalotiopsis"
+  },
+  "3": {
+    "codigo": "SIGATOKA",
+    "nombre_tecnico": "sigatoka"
+  }
+}

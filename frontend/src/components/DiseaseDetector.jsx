@@ -3,6 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Upload, ImagePlus, ScanLine, CheckCircle, AlertTriangle, AlertCircle, Shield, Leaf } from 'lucide-react'
 import axios from 'axios'
 
+// URL base del backend. En desarrollo se deja vacía y el proxy de Vite
+// (vite.config.js) redirige /analizar a localhost:8080. En producción se
+// define VITE_API_URL con la URL del backend en Railway.
+const API_URL = import.meta.env.VITE_API_URL || ''
+
 const URGENCY_CONFIG = {
   ninguna: { icon: CheckCircle,    color: '#1b4332', bg: '#d8f3dc', label: 'Planta sana'    },
   media:   { icon: AlertCircle,    color: '#7d4e00', bg: '#fff3cd', label: 'Urgencia media'  },
@@ -14,9 +19,15 @@ const LOADING_STEPS = [
   { label: 'Preprocesando imagen…',        pct: 15 },
   { label: 'Normalizando canales RGB…',    pct: 35 },
   { label: 'Extrayendo características…', pct: 55 },
-  { label: 'Analizando patrones foliares…',pct: 75 },
+  { label: 'Analizando patrones visuales…',pct: 75 },
   { label: 'Generando diagnóstico…',       pct: 92 },
 ]
+
+const CULTIVO_META = {
+  yuca:    { label: 'hoja de yuca',    placeholder: 'Fotografía de hoja de yuca · JPG o PNG' },
+  platano: { label: 'hoja de plátano', placeholder: 'Fotografía de hoja de plátano · JPG o PNG' },
+  cacao:   { label: 'vaina de cacao',  placeholder: 'Fotografía de vaina de cacao · JPG o PNG' },
+}
 
 function AnalysisLoader({ preview }) {
   const [stepIdx, setStepIdx]   = useState(0)
@@ -134,7 +145,7 @@ function AnalysisLoader({ preview }) {
   )
 }
 
-export default function DiseaseDetector() {
+export default function DiseaseDetector({ cultivo }) {
   const [imagen, setImagen]        = useState(null)
   const [preview, setPreview]      = useState(null)
   const [resultado, setResultado]  = useState(null)
@@ -181,8 +192,9 @@ export default function DiseaseDetector() {
     startLoadingSteps()
     try {
       const fd = new FormData()
+      fd.append('cultivo', cultivo)
       fd.append('imagen', imagen)
-      const { data } = await axios.post('/api/analizar', fd, {
+      const { data } = await axios.post(`${API_URL}/analizar`, fd, {
         headers: { 'Content-Type': 'multipart/form-data' }
       })
       stopLoadingSteps()
@@ -192,15 +204,33 @@ export default function DiseaseDetector() {
       setTab('sintomas')
     } catch {
       stopLoadingSteps()
-      setError('No se pudo conectar con el servidor. ¿Está el backend corriendo en puerto 8000?')
+      setError('No se pudo conectar con el servidor. ¿Está el backend corriendo en puerto 8080?')
     } finally {
       setCargando(false)
       setProgress(0)
     }
   }
 
-  const urgCfg = resultado ? URGENCY_CONFIG[resultado.urgencia] ?? URGENCY_CONFIG.alta : null
+  const meta    = CULTIVO_META[cultivo] ?? CULTIVO_META.yuca
+  const urgCfg  = resultado ? URGENCY_CONFIG[resultado.urgencia] ?? URGENCY_CONFIG.alta : null
   const UrgIcon = urgCfg?.icon
+
+  if (!cultivo) {
+    return (
+      <section id="analisis" style={{
+        padding: '80px 0',
+        background: 'linear-gradient(180deg, var(--green-deep) 0%, #0f2820 100%)',
+        textAlign: 'center',
+      }}>
+        <div className="container">
+          <Leaf size={40} color="rgba(183,228,199,0.35)" strokeWidth={1.3} style={{ marginBottom: '16px' }} />
+          <p style={{ color: 'rgba(245,240,232,0.45)', fontSize: '1rem' }}>
+            Selecciona un cultivo arriba para iniciar el diagnóstico fitosanitario.
+          </p>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id="analisis" style={{
@@ -226,22 +256,26 @@ export default function DiseaseDetector() {
           style={{ marginBottom: '52px' }}
         >
           <span style={{
-            display: 'inline-block',
-            background: 'rgba(82,183,136,0.18)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'rgba(82,183,136,0.22)',
             color: '#b7e4c7',
-            padding: '4px 14px',
+            padding: '7px 18px',
             borderRadius: '999px',
-            fontSize: '0.72rem',
+            fontSize: '0.78rem',
             fontWeight: 700,
-            letterSpacing: '0.08em',
+            letterSpacing: '0.10em',
             textTransform: 'uppercase',
             marginBottom: '16px',
-            border: '1px solid rgba(183,228,199,0.20)',
+            border: '1px solid rgba(183,228,199,0.30)',
+            boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
           }}>
-            Diagnóstico fitosanitario
+            <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#52b788', flexShrink: 0 }} />
+            Paso 2 — Diagnóstico fitosanitario
           </span>
           <h2 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.6rem)', marginBottom: '8px', color: 'var(--cream)' }}>
-            Análisis de hoja
+            Análisis de {meta.label}
           </h2>
           <p style={{ color: 'rgba(245,240,232,0.55)', fontSize: '0.97rem' }}>
             Sube una fotografía tomada con celular para obtener el diagnóstico.
@@ -252,10 +286,10 @@ export default function DiseaseDetector() {
           display: 'grid',
           gridTemplateColumns: (preview || resultado) ? '1fr 1fr' : '1fr',
           gap: '32px',
-          alignItems: 'start',
+          alignItems: 'stretch',
         }}>
           {/* Drop zone / loader */}
-          <motion.div layout>
+          <motion.div layout style={{ height: '100%' }}>
             <AnimatePresence mode="wait">
               {cargando && preview ? (
                 <motion.div
@@ -352,12 +386,12 @@ export default function DiseaseDetector() {
                     style={{
                       border: `2px dashed ${dragging ? '#52b788' : 'rgba(183,228,199,0.35)'}`,
                       borderRadius: 'var(--radius-lg)',
-                      padding: '40px 24px',
+                      padding: '48px 28px',
                       textAlign: 'center',
                       cursor: 'pointer',
                       background: dragging ? 'rgba(82,183,136,0.08)' : 'rgba(255,255,255,0.04)',
                       transition: 'all var(--transition)',
-                      minHeight: '220px',
+                      minHeight: '260px',
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'center',
@@ -371,7 +405,7 @@ export default function DiseaseDetector() {
                       <>
                         <ImagePlus size={48} color="rgba(183,228,199,0.60)" strokeWidth={1.3} />
                         <p style={{ color: '#b7e4c7', fontWeight: 500 }}>Arrastra una imagen o haz clic aquí</p>
-                        <p style={{ color: 'rgba(245,240,232,0.40)', fontSize: '0.85rem' }}>JPG, PNG — fotografía de hoja de yuca</p>
+                        <p style={{ color: 'rgba(245,240,232,0.40)', fontSize: '0.85rem' }}>{meta.placeholder}</p>
                       </>
                     )}
                     <input ref={inputRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={(e) => procesarArchivo(e.target.files[0])} />
@@ -387,7 +421,7 @@ export default function DiseaseDetector() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.97 }}
                       >
-                        <ScanLine size={18} /> Analizar hoja
+                        <ScanLine size={18} /> Analizar {meta.label}
                       </motion.button>
                       <button
                         onClick={() => { setImagen(null); setPreview(null); setResultado(null); setError(null) }}
@@ -427,68 +461,90 @@ export default function DiseaseDetector() {
                 style={{
                   background: 'var(--cream)',
                   borderRadius: 'var(--radius-lg)',
-                  padding: '28px',
                   border: '1px solid var(--cream-dark)',
                   boxShadow: 'var(--shadow-lg)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
+                  overflow: 'hidden',
                 }}
               >
-                {/* Status badge */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-                  <div style={{ background: urgCfg.bg, borderRadius: '50%', padding: '8px', display: 'flex' }}>
-                    <UrgIcon size={22} color={urgCfg.color} />
-                  </div>
-                  <span className={`badge badge--${resultado.urgencia === 'ninguna' ? 'sano' : resultado.urgencia}`}>
-                    {urgCfg.label}
-                  </span>
-                </div>
-
-                <h3 style={{ fontSize: '1.4rem', marginBottom: '4px' }}>{resultado.nombre_es}</h3>
-                {resultado.agente && <p style={{ color: 'var(--brown-mid)', fontSize: '0.85rem', marginBottom: '8px', fontStyle: 'italic' }}>{resultado.agente}</p>}
-
-                {resultado.tipo && (
-                  <span style={{ display: 'inline-block', background: 'var(--cream-dark)', padding: '3px 10px', borderRadius: '6px', fontSize: '0.78rem', marginBottom: '16px' }}>
-                    Tipo: {resultado.tipo}
-                  </span>
-                )}
-
-                {/* Confidence bar */}
-                <div style={{ marginBottom: '20px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: 'var(--brown-mid)' }}>
-                    <span>Confianza del modelo</span>
-                    <strong>{resultado.confianza}%</strong>
-                  </div>
-                  <div className="confidence-bar">
-                    <div className="confidence-bar__fill" style={{ width: `${resultado.confianza}%` }} />
-                  </div>
-                </div>
-
-                <p style={{ fontSize: '0.88rem', marginBottom: '20px', color: 'var(--gray-text)' }}>{resultado.descripcion}</p>
-
-                {/* Tabs */}
-                {resultado.urgencia !== 'ninguna' && (
-                  <>
-                    <div className="tabs">
-                      {['sintomas', 'tratamiento', 'prevencion'].map(t => (
-                        <button key={t} className={`tab-btn ${tab === t ? 'active' : ''}`} onClick={() => setTab(t)}>
-                          {t.charAt(0).toUpperCase() + t.slice(1)}
-                        </button>
-                      ))}
+                {/* ── HEADER ── */}
+                <div style={{ flexShrink: 0, padding: '20px 24px 16px', borderBottom: '1px solid var(--cream-dark)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+                    <div style={{ background: urgCfg.bg, borderRadius: '50%', padding: '8px', display: 'flex' }}>
+                      <UrgIcon size={22} color={urgCfg.color} />
                     </div>
+                    <span className={`badge badge--${resultado.urgencia === 'ninguna' ? 'sano' : resultado.urgencia}`}>
+                      {urgCfg.label}
+                    </span>
+                  </div>
+
+                  <h3 style={{ fontSize: '1.4rem', marginBottom: '4px' }}>{resultado.nombre_es}</h3>
+                  {resultado.agente && (
+                    <p style={{ color: 'var(--brown-mid)', fontSize: '0.85rem', marginBottom: '8px', fontStyle: 'italic' }}>
+                      {resultado.agente}
+                    </p>
+                  )}
+                  {resultado.tipo && (
+                    <span style={{ display: 'inline-block', background: 'var(--cream-dark)', padding: '3px 10px', borderRadius: '6px', fontSize: '0.78rem', marginBottom: '12px' }}>
+                      Tipo: {resultado.tipo}
+                    </span>
+                  )}
+
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: 'var(--brown-mid)', marginBottom: '4px' }}>
+                      <span>Confianza del modelo</span>
+                      <strong>{resultado.confianza}%</strong>
+                    </div>
+                    <div className="confidence-bar">
+                      <div className="confidence-bar__fill" style={{ width: `${resultado.confianza}%` }} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── BODY (scrollable) ── */}
+                <div style={{ flex: 1, overflowY: 'auto', padding: '16px 24px' }}>
+                  <p style={{ fontSize: '0.88rem', marginBottom: '16px', color: 'var(--gray-text)', lineHeight: 1.65 }}>
+                    {resultado.descripcion}
+                  </p>
+
+                  {resultado.urgencia !== 'ninguna' && (
+                    <>
+                      <div className="tabs">
+                        {['sintomas', 'tratamiento', 'prevencion'].map(t => (
+                          <button key={t} className={`tab-btn ${tab === t ? 'active' : ''}`} onClick={() => setTab(t)}>
+                            {t.charAt(0).toUpperCase() + t.slice(1)}
+                          </button>
+                        ))}
+                      </div>
+                      <ul style={{ paddingLeft: '20px', fontSize: '0.87rem', lineHeight: 1.8, color: 'var(--gray-text)', marginTop: '8px' }}>
+                        {resultado[tab]?.map((item, i) => <li key={i}>{item}</li>)}
+                      </ul>
+                    </>
+                  )}
+
+                  {resultado.urgencia === 'ninguna' && (
                     <ul style={{ paddingLeft: '20px', fontSize: '0.87rem', lineHeight: 1.8, color: 'var(--gray-text)' }}>
-                      {resultado[tab]?.map((item, i) => <li key={i}>{item}</li>)}
+                      {resultado.tratamiento?.map((item, i) => <li key={i}>{item}</li>)}
                     </ul>
-                  </>
-                )}
+                  )}
+                </div>
 
-                {resultado.urgencia === 'ninguna' && (
-                  <ul style={{ paddingLeft: '20px', fontSize: '0.87rem', lineHeight: 1.8, color: 'var(--gray-text)' }}>
-                    {resultado.tratamiento?.map((item, i) => <li key={i}>{item}</li>)}
-                  </ul>
-                )}
-
-                <div style={{ marginTop: '16px', padding: '10px 14px', background: 'var(--cream-dark)', borderRadius: '8px', fontSize: '0.8rem', color: 'var(--brown-mid)' }}>
-                  <Shield size={13} style={{ display: 'inline', marginRight: '6px' }} />
-                  {resultado.impacto}
+                {/* ── FOOTER ── */}
+                <div style={{
+                  flexShrink: 0,
+                  padding: '12px 24px',
+                  borderTop: '1px solid var(--cream-dark)',
+                  background: 'var(--cream-dark)',
+                  fontSize: '0.8rem',
+                  color: 'var(--brown-mid)',
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '7px',
+                }}>
+                  <Shield size={13} style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <span>{resultado.impacto}</span>
                 </div>
               </motion.div>
             )}

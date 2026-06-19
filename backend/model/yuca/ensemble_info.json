@@ -1,0 +1,7 @@
+{
+  "w_efficientnet": 0.45,
+  "w_swin": 0.55,
+  "val_acc_ensemble": 0.8904,
+  "val_acc_effnet": 0.8806,
+  "val_acc_swin": 0.8846
+}

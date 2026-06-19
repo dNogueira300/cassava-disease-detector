@@ -1,0 +1,4 @@
+# Dependencias solo de desarrollo (no se instalan en producción).
+# gdown lo usaba el script legado backend/model/download_model.py para bajar
+# pesos desde Google Drive; en producción los modelos vienen de Hugging Face.
+gdown==6.0.0

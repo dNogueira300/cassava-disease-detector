@@ -1,0 +1,3 @@
+# Los modelos .pth ya no se versionan en git ni en Git LFS.
+# Se descargan en el arranque del contenedor desde Hugging Face Hub
+# (ver backend/src/download_models.py). Regla LFS de *.pth eliminada.

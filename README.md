@@ -23,13 +23,15 @@ mediante fotografías. Diseñado para agricultores de la Amazonía peruana.
 ## Ejecutar
 
 ```bash
-# Backend
+# Backend (puerto 8080, coherente con el proxy de Vite)
 cd backend
 python -m venv venv
 venv\Scripts\activate
-pip install -r src/requirements.txt
-python model/download_model.py
-uvicorn src.main:app --reload --port 8000
+pip install -r requirements.txt
+# Modelos: en local se asume que los .pth ya están en backend/model/<cultivo>/.
+# Para descargarlos desde Hugging Face: set HF_REPO=DANCN/amazonia-crop-models
+#   y luego  python -m src.download_models
+uvicorn src.main:app --reload --port 8080
 
 # Frontend (otra terminal)
 cd frontend
@@ -37,7 +39,8 @@ npm install
 npm run dev
 ```
 
-Abrir: http://localhost:5173
+Abrir: http://localhost:5173 — el frontend habla con el backend en el puerto
+**8080** (configurable con `VITE_API_URL`).
 
 ## Proyectos de referencia
 - [Top 1% Kaggle — CNN + ViT Ensemble (kozodoi)](https://github.com/kozodoi/Kaggle_Leaf_Disease_Classification)

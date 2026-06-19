@@ -1,0 +1,99 @@
+{
+  "CORDANA": {
+    "nombre_es": "Mancha de Cordana",
+    "cultivo": "Plátano (Musa paradisiaca)",
+    "agente": "Neocordana musae (Corda) Hern. Restr. & Crous",
+    "tipo": "Fúngica",
+    "estado": "enfermo",
+    "urgencia": "media",
+    "descripcion": "Enfermedad fúngica que produce manchas ovales de color marrón claro en las hojas del plátano, reduciendo el área fotosintética y el rendimiento del cultivo.",
+    "sintomas": [
+      "Manchas ovales de color marrón claro con halo amarillo en las hojas",
+      "Las manchas aparecen primero en hojas viejas y avanzan hacia las jóvenes",
+      "En ataques severos las hojas se secan prematuramente"
+    ],
+    "tratamiento": [
+      "Aplicar fungicida sistémico (propiconazol o trifloxistrobina)",
+      "Eliminar hojas muy afectadas y destruirlas fuera de la parcela",
+      "Mejorar la ventilación entre plantas con podas de hijos"
+    ],
+    "prevencion": [
+      "Mantener distancias de siembra adecuadas para buena ventilación",
+      "Evitar el encharcamiento prolongado del suelo",
+      "Aplicar fungicidas preventivos al inicio de la época lluviosa"
+    ],
+    "impacto_economico": "Reducción de 10-20% en rendimiento en ataques moderados"
+  },
+  "HEALTHY": {
+    "nombre_es": "Planta sana",
+    "cultivo": "Plátano (Musa paradisiaca)",
+    "agente": null,
+    "tipo": null,
+    "estado": "sano",
+    "urgencia": "ninguna",
+    "descripcion": "La planta de plátano analizada no presenta síntomas de enfermedades. Se encuentra en buen estado fitosanitario.",
+    "sintomas": [],
+    "tratamiento": [
+      "Continuar con el monitoreo semanal del cultivo",
+      "Mantener el deshoje sanitario rutinario",
+      "Fertilizar según los requerimientos del cultivo"
+    ],
+    "prevencion": [
+      "Mantener el programa de manejo integrado de plagas y enfermedades",
+      "Registrar observaciones del cultivo periódicamente"
+    ],
+    "impacto_economico": "Sin impacto — cultivo en condiciones normales"
+  },
+  "PESTALOTIOPSIS": {
+    "nombre_es": "Mancha de Pestalotiopsis",
+    "cultivo": "Plátano (Musa paradisiaca)",
+    "agente": "Pestalotiopsis microspora",
+    "tipo": "Fúngica",
+    "estado": "enfermo",
+    "urgencia": "media",
+    "descripcion": "Enfermedad fúngica oportunista que afecta principalmente plantas debilitadas, con heridas o bajo estrés nutricional.",
+    "sintomas": [
+      "Manchas irregulares de color marrón oscuro con bordes amarillos",
+      "Las manchas pueden confluir formando grandes áreas necróticas",
+      "Se observan puntitos negros (acérvulos) en el centro de las manchas"
+    ],
+    "tratamiento": [
+      "Aplicar fungicida cúprico o sistémico sobre las manchas",
+      "Mejorar las condiciones nutricionales de la planta con fertilización",
+      "Eliminar y destruir el material vegetal muy afectado"
+    ],
+    "prevencion": [
+      "Evitar heridas innecesarias durante las labores culturales",
+      "Mantener fertilización balanceada con énfasis en potasio",
+      "Evitar el estrés hídrico en épocas secas"
+    ],
+    "impacto_economico": "Pérdidas moderadas de 10-25% en variedades susceptibles"
+  },
+  "SIGATOKA": {
+    "nombre_es": "Sigatoka — Mancha foliar",
+    "cultivo": "Plátano (Musa paradisiaca)",
+    "agente": "Mycosphaerella fijiensis (negra) / Mycosphaerella musicola (amarilla)",
+    "tipo": "Fúngica",
+    "estado": "enfermo",
+    "urgencia": "alta",
+    "descripcion": "La enfermedad fúngica más importante del plátano a nivel mundial. Destruye el área foliar y reduce drásticamente el rendimiento y calidad de los frutos.",
+    "sintomas": [
+      "Manchas amarillas pequeñas en el haz de las hojas que evolucionan a rayas pardo-negras",
+      "Las manchas se alargan siguiendo las nervaduras de la hoja",
+      "Las hojas se secan completamente en casos severos",
+      "Los frutos maduran prematuramente y con baja calidad comercial"
+    ],
+    "tratamiento": [
+      "Aplicar fungicida sistémico: propiconazol, trifloxistrobina o azoxistrobina",
+      "Deshoje sanitario: eliminar hojas con más del 50% de área afectada",
+      "Alternar fungicidas de diferente modo de acción para evitar resistencia",
+      "Aumentar la frecuencia de aplicaciones en época lluviosa"
+    ],
+    "prevencion": [
+      "Usar variedades resistentes o tolerantes a Sigatoka negra",
+      "Mantener buen drenaje del suelo para reducir la humedad ambiental",
+      "Monitoreo semanal del índice de Sigatoka para aplicar a tiempo"
+    ],
+    "impacto_economico": "Pérdidas de 30-50% en rendimiento sin manejo. Puede destruir la cosecha completa."
+  }
+}

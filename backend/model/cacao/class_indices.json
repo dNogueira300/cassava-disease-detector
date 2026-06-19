@@ -1,0 +1,10 @@
+{
+  "0": {
+    "codigo": "HEALTHY",
+    "nombre_tecnico": "healthy"
+  },
+  "1": {
+    "codigo": "BLACK_POD_ROT",
+    "nombre_tecnico": "black_pod_rot"
+  }
+}

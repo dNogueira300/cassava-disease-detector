@@ -1,0 +1,17 @@
+# Servicio FRONTEND — AmazoniaCrop (React + Vite + nginx)
+#
+# En Railway este servicio debe tener Root Directory = frontend/. Railway lee
+# este archivo desde ahí; el contexto de build es frontend/.
+#
+# Recordar definir el build arg VITE_API_URL con la URL pública del backend
+# (Settings → Build → Build Args, o variable VITE_API_URL).
+
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 120
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

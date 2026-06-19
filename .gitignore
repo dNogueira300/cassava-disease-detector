@@ -1,4 +1,10 @@
-# Modelo (archivo pesado)
+# Modelos (archivos pesados) — se sirven desde Hugging Face Hub, no se versionan.
+# Se usan ambos patrones para cubrir la raíz de model/ y sus subcarpetas
+# (yuca/ platano/ cacao/), ya que `model/*.pth` no alcanza subdirectorios.
+backend/model/**/*.h5
+backend/model/**/*.pt
+backend/model/**/*.pkl
+backend/model/**/*.pth
 backend/model/*.h5
 backend/model/*.pt
 backend/model/*.pkl

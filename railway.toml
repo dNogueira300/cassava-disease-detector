@@ -1,0 +1,21 @@
+# Servicio BACKEND — AmazoniaCrop API
+#
+# DECISIÓN: servicios separados en Railway. Este archivo configura el servicio
+# del BACKEND y vive en la raíz del repo (no en backend/) a propósito: el
+# Dockerfile del backend necesita copiar tanto backend/ como assets/ (los
+# predictores leen assets/disease_info/*.json), por lo que el contexto de build
+# debe ser la raíz. Railway lee railway.toml desde el Root Directory del
+# servicio, así que el servicio backend debe tener Root Directory = repo root.
+#
+# El servicio FRONTEND usa su propio frontend/railway.toml (Root Directory = frontend/).
+
+[build]
+builder = "dockerfile"
+dockerfilePath = "backend/Dockerfile"
+
+[deploy]
+# /health devuelve 200 si los 4 .pth están en disco, 503 si falta alguno.
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

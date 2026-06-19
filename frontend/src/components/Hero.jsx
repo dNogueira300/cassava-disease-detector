@@ -2,14 +2,14 @@ import { motion } from 'framer-motion'
 import { Leaf, ChevronDown } from 'lucide-react'
 
 const STATS = [
-  { value: '21,367', label: 'imágenes' },
-  { value: '5',      label: 'clases'   },
-  { value: '~91%',   label: 'precisión'},
+  { value: '28,221', label: 'imágenes'  },
+  { value: '11',     label: 'clases'    },
+  { value: '~94%',   label: 'precisión' },
 ]
 
 export default function Hero() {
-  const scrollToAnalysis = () => {
-    document.getElementById('analisis')?.scrollIntoView({ behavior: 'smooth' })
+  const scrollToSelector = () => {
+    document.getElementById('selector')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -41,7 +41,6 @@ export default function Hero() {
       {/* Main content */}
       <div className="container" style={{ position: 'relative', zIndex: 1, padding: '0 24px' }}>
 
-        {/* Row: text block + stats */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -49,14 +48,13 @@ export default function Hero() {
           flexWrap: 'wrap',
         }}>
 
-          {/* ── Text block ── */}
+          {/* Text block */}
           <motion.div
             initial={{ opacity: 0, y: 36 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             style={{ flex: '1 1 360px' }}
           >
-            {/* Leaf — bloque propio para no fluir inline con el badge */}
             <div style={{ marginBottom: '20px' }}>
               <motion.div
                 animate={{ rotate: [0, 8, -5, 0] }}
@@ -67,7 +65,6 @@ export default function Hero() {
               </motion.div>
             </div>
 
-            {/* Badge — bloque propio */}
             <div style={{ marginBottom: '18px' }}>
               <span style={{
                 display: 'inline-flex',
@@ -96,7 +93,7 @@ export default function Hero() {
               textShadow: '0 2px 24px rgba(0,0,0,0.45)',
               display: 'block',
             }}>
-              YucaIA
+              AmazoniaCrop
             </h1>
             <p style={{
               fontSize: 'clamp(1.05rem, 2.5vw, 1.5rem)',
@@ -106,21 +103,20 @@ export default function Hero() {
               fontFamily: 'Playfair Display, serif',
               textShadow: '0 2px 12px rgba(0,0,0,0.35)',
             }}>
-              Detección de Enfermedades Foliares
+              Detección de Enfermedades en Cultivos Amazónicos
             </p>
             <p style={{ color: 'rgba(245,240,232,0.70)', fontSize: '0.97rem', maxWidth: '460px', marginBottom: '8px', lineHeight: 1.75 }}>
-              <em>Manihot esculenta</em> · Amazonía Peruana
+              <em>Yuca · Plátano · Cacao</em> · Amazonía Peruana
             </p>
             <p style={{ color: 'rgba(245,240,232,0.52)', fontSize: '0.93rem', maxWidth: '460px', marginBottom: '40px', lineHeight: 1.75 }}>
-              Sube una fotografía de una hoja de yuca y obtén un diagnóstico
+              Selecciona el cultivo, sube una fotografía y obtén un diagnóstico
               fitosanitario inmediato con recomendaciones de tratamiento y prevención.
             </p>
 
-            {/* CTA — bloque propio, alineado izquierda */}
             <div>
               <motion.button
                 className="btn-primary"
-                onClick={scrollToAnalysis}
+                onClick={scrollToSelector}
                 style={{
                   fontSize: '1.05rem',
                   padding: '16px 44px',
@@ -137,7 +133,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* ── Stats column ── */}
+          {/* Stats column */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -172,7 +168,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll arrow — centrado abajo */}
+      {/* Scroll arrow */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
