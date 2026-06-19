@@ -10,10 +10,10 @@ backend/.venv/
 backend/env/
 
 # Modelos pesados: se descargan desde Hugging Face en el arranque, NO se copian.
-*.pth
-*.pt
-*.h5
-*.pkl
+**/*.pth
+**/*.pt
+**/*.h5
+**/*.pkl
 
 # Frontend (tiene su propio Dockerfile/contexto)
 frontend/node_modules/

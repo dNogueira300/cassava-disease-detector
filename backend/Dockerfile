@@ -15,10 +15,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # 1) torch + torchvision CPU-only PRIMERO, desde el índice de PyTorch, para no
-#    arrastrar la variante CUDA (varios GB). Misma versión que requirements.txt,
-#    así pip las da por satisfechas en el paso siguiente.
+#    arrastrar la variante CUDA (varios GB). Sin pin de versión: dejamos que
+#    pip resuelva el par compatible más reciente del índice CPU. requirements.txt
+#    NO debe listar torch/torchvision (ver nota ahí) para que el siguiente paso
+#    no intente reinstalar una versión distinta desde el índice normal de PyPI.
 RUN pip install --no-cache-dir \
-        torch==2.11.0 torchvision==0.22.0 \
+        torch torchvision \
         --index-url https://download.pytorch.org/whl/cpu
 
 # 2) Resto de dependencias de producción.

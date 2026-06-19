@@ -2,10 +2,16 @@
 # Ubicación estándar (backend/requirements.txt) para que el builder de
 # Railway/Docker las detecte. Copia sincronizada de src/requirements.txt.
 #
-# NOTA torch/torchvision: el Dockerfile instala estas dos desde el índice
-# CPU-only de PyTorch ANTES de este archivo para evitar la variante CUDA.
-torch==2.11.0
-torchvision==0.22.0
+# NOTA: torch/torchvision NO se listan aquí a propósito. El Dockerfile las
+# instala en un paso previo desde el índice CPU-only de PyTorch (sin pin de
+# versión, para evitar conflictos de resolución). Si se listaran aquí con
+# versión fija, este `pip install -r requirements.txt` intentaría reinstalarlas
+# desde el índice normal de PyPI (variante CUDA, mucho más pesada) y podría
+# pisar la versión CPU ya instalada.
+#
+# Para recrear un entorno LOCAL desde cero, instala primero:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+# y luego este archivo.
 timm==1.0.15
 numpy==2.2.5
 Pillow==11.2.1
