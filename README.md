@@ -1,8 +1,9 @@
-# YucaIA — Cassava Disease Detector
-## Detección de Enfermedades en Yuca (*Manihot esculenta*) · Amazonía Peruana
+# AmazoniaCrop — Detección de Enfermedades en Cultivos Amazónicos
+## Yuca (*Manihot esculenta*) · Plátano (*Musa paradisiaca*) · Cacao (*Theobroma cacao*) — Amazonía Peruana
 
-Sistema de inteligencia artificial para detectar enfermedades en hojas de yuca
-mediante fotografías. Diseñado para agricultores de la Amazonía peruana.
+**AmazoniaCrop** es un sistema de inteligencia artificial para detectar
+enfermedades en hojas de cultivos amazónicos (yuca, plátano y cacao) mediante
+fotografías. Diseñado para agricultores de la Amazonía peruana.
 
 ## Dataset
 - **Kaggle Cassava Leaf Disease Classification**
