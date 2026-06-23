@@ -1,4 +1,4 @@
-import { Leaf, GitBranch } from 'lucide-react'
+import { Leaf } from 'lucide-react'
 
 const DATASETS = [
   { label: 'Yuca',    desc: 'Kaggle Cassava Leaf Disease Classification · CC0' },
@@ -61,16 +61,6 @@ export default function Footer() {
             </div>
           ))}
         </div>
-
-        <a
-          href="https://github.com/dNogueira300/cassava-disease-detector"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--green-pale)', fontSize: '0.82rem' }}
-        >
-          <GitBranch size={15} />
-          github.com/dNogueira300/cassava-disease-detector
-        </a>
       </div>
     </footer>
   )
